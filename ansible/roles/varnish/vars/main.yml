@@ -1,0 +1,3 @@
+---
+varnish_packages:
+  - name: varnish6

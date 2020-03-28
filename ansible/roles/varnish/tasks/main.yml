@@ -1,0 +1,14 @@
+---
+- name: install varnish packages
+  with_items: "{{ varnish_packages }}"
+  package:
+    name: "{{ item.name }}"
+  notify:
+    - restart varnish
+
+- name: enable varnish
+  template:
+    src: varnishd.j2
+    dest: /etc/rc.conf.d/varnishd
+  notify:
+    - restart varnish
